@@ -11,6 +11,12 @@ public class FluxAndMonoService {
         return Flux.fromIterable(Arrays.asList("Mango", "Orange", "Banana")).log();
     }
 
+
+    public Flux<String> fruitsFluxMap() {
+        return Flux.fromIterable(Arrays.asList("Mango", "Orange", "Banana"))
+                .map(String::toUpperCase).log();
+    }
+
     public Mono<String> fruitsMono() {
         return Mono.just("Mango").log();
     }
@@ -18,6 +24,7 @@ public class FluxAndMonoService {
     public static void main(String[] args) {
         FluxAndMonoService fluxAndMonoService = new FluxAndMonoService();
 
+        System.out.println("==========FLUX=========");
         fluxAndMonoService.fruitsFlux().subscribe(s->{
             System.out.println("flux = "+ s);
         });
@@ -25,5 +32,6 @@ public class FluxAndMonoService {
         fluxAndMonoService.fruitsMono().subscribe(s->{
             System.out.println("mono = "+ s);
         });
+
     }
 }

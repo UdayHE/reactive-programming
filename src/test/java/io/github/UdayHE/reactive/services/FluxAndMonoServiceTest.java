@@ -21,4 +21,10 @@ class FluxAndMonoServiceTest {
         Mono<String> fruit = fluxAndMonoService.fruitsMono();
         StepVerifier.create(fruit).expectNext("Mango").verifyComplete();
     }
+
+    @Test
+    void fruitsFluxMap() {
+        Flux<String> fruitsFluxMap = fluxAndMonoService.fruitsFluxMap();
+        StepVerifier.create(fruitsFluxMap).expectNext("MANGO", "ORANGE", "BANANA").verifyComplete();
+    }
 }
